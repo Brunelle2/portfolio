@@ -3,354 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brunelle - Développeuse Full Stack</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Brunelle SIEWE | Developpeuse</title>
+    <!-- Google Fonts: Poppins for body, Roboto Mono for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Devicon for tech icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    
+    <!-- Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
-        /* Variables CSS - Thème Nuit/Violet */
+        /* Custom Styles for new Black, White & Pink Theme */
         :root {
-            --primary-dark: #0f172a;
-            --secondary-dark: #1e293b;
-            --accent-purple: #8b5cf6;
-            --accent-blue: #3b82f6;
-            --accent-pink: #ec4899;
-            --text-light: #f8fafc;
-            --text-muted: #cbd5e1;
-            --border-radius: 12px;
-            --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-secondary: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
-            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        }
-
-        /* Reset et styles de base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            --bg-primary: #0A0A0A; /* Near Black */
+            --bg-secondary: #141414; /* Dark Gray */
+            --primary-accent: #E800FF; /* Electric Pink/Fuchsia */
+            --text-primary: #FFFFFF; /* Pure White */
+            --text-secondary: #A9A9A9; /* Light Gray */
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
-            color: var(--text-light);
-            background: var(--gradient-dark);
-            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            scroll-behavior: smooth;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
+        
         h1, h2, h3 {
-            margin-bottom: 20px;
-            font-weight: 700;
-            line-height: 1.2;
+            font-family: 'Roboto Mono', monospace;
         }
 
-        h1 {
-            font-size: 3rem;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        /* Accent Text Color */
+        .accent-text {
+            color: var(--primary-accent);
         }
 
-        h2 {
-            font-size: 2.2rem;
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
+        /* New Button Style */
+        .cta-button {
+            background-color: transparent;
+            border: 2px solid var(--primary-accent);
+            color: var(--primary-accent);
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--gradient-secondary);
-            border-radius: 2px;
-        }
-
-        p {
-            margin-bottom: 16px;
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--accent-blue);
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--accent-purple);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: var(--gradient-secondary);
-            color: white;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: var(--gradient-primary);
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .btn:hover::before {
-            width: 100%;
-        }
-
-        .btn:hover {
+        .cta-button:hover {
+            background-color: var(--primary-accent);
+            color: var(--text-primary);
+            box-shadow: 0 0 25px rgba(232, 0, 255, 0.5);
             transform: translateY(-3px);
-            box-shadow: var(--box-shadow);
+        }
+        
+        /* New Sharp Card Effect */
+        .sharp-card {
+            background: var(--bg-secondary);
+            border: 1px solid #333;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .sharp-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
-        /* Header */
-        header {
-            background: rgba(15, 23, 42, 0.95);
+        /* Header Styles */
+        #main-header {
+            background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            position: fixed;
-            width: 100%;
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid #222;
+        }
+        
+        .nav-link.active {
+            color: var(--primary-accent);
+            text-shadow: 0 0 10px rgba(232, 0, 255, 0.5);
+        }
+
+        /* Custom Section Divider */
+        section {
+            border-bottom: 1px solid #222;
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        /* Animation for elements fading in on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Skill icon style */
+        .skill-icon {
+            font-size: 4rem; /* 64px */
+            margin-bottom: 0.75rem; /* 12px */
+            color: var(--text-secondary);
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .sharp-card:hover .skill-icon {
+            color: var(--primary-accent);
+            text-shadow: 0 0 15px rgba(232, 0, 255, 0.5);
+        }
+
+        /* Home Section Animation */
+        .home-animation {
+            position: absolute;
             top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 28px;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            font-weight: 500;
-            font-size: 0.9rem;
-            position: relative;
-            padding: 4px 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-secondary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
             width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 150px 0 80px;
-            text-align: center;
-            position: relative;
+            height: 100%;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -30%;
-            left: -30%;
-            width: 160%;
-            height: 160%;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, rgba(15, 23, 42, 0) 70%);
             z-index: -1;
         }
 
-        .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 16px;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-
-        .tagline {
-            font-size: 1.5rem;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        /* About Section */
-        .about {
-            background: var(--secondary-dark);
-            position: relative;
-        }
-
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .about-text {
-            max-width: 700px;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 30px;
-        }
-
-        .skill-tag {
-            padding: 8px 20px;
-            background: rgba(139, 92, 246, 0.15);
-            color: var(--text-light);
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            border: 1px solid rgba(139, 92, 246, 0.25);
-            transition: var(--transition);
-        }
-
-        .skill-tag:hover {
-            background: rgba(139, 92, 246, 0.3);
-            transform: translateY(-2px);
-        }
-
-        /* Projects Section - CADRES RÉDUITS */
-        .projects {
-            background: var(--primary-dark);
-            position: relative;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 24px;
-        }
-
-        .project-card {
-            background: rgba(30, 41, 59, 0.6);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            cursor: pointer;
-            position: relative;
-            height: fit-content;
-        }
-
-        .project-card::before {
-            content: '';
+        .particle {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gradient-secondary);
+            bottom: -20px;
+            background-color: var(--primary-accent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.5;
+            }
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
-        .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-            background: rgba(30, 41, 59, 0.8);
-        }
+        .particle:nth-child(1) { left: 10%; width: 10px; height: 10px; animation-delay: 0s; animation-duration: 15s; }
+        .particle:nth-child(2) { left: 20%; width: 5px; height: 5px; animation-delay: 2s; animation-duration: 25s; }
+        .particle:nth-child(3) { left: 30%; width: 15px; height: 15px; animation-delay: 4s; animation-duration: 18s; }
+        .particle:nth-child(4) { left: 40%; width: 8px; height: 8px; animation-delay: 1s; animation-duration: 22s; }
+        .particle:nth-child(5) { left: 50%; width: 12px; height: 12px; animation-delay: 5s; animation-duration: 16s; }
+        .particle:nth-child(6) { left: 60%; width: 6px; height: 6px; animation-delay: 3s; animation-duration: 28s; }
+        .particle:nth-child(7) { left: 70%; width: 9px; height: 9px; animation-delay: 6s; animation-duration: 20s; }
+        .particle:nth-child(8) { left: 80%; width: 4px; height: 4px; animation-delay: 2s; animation-duration: 30s; }
+        .particle:nth-child(9) { left: 90%; width: 14px; height: 14px; animation-delay: 7s; animation-duration: 17s; }
+        .particle:nth-child(10) { left: 95%; width: 7px; height: 7px; animation-delay: 1s; animation-duration: 24s; }
 
-        .project-content {
-            padding: 20px;
-        }
-
-        .project-category {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(59, 130, 246, 0.15);
-            color: var(--accent-blue);
-            border-radius: 16px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            border: 1px solid rgba(59, 130, 246, 0.25);
-        }
-
-        .project-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            color: var(--text-light);
-        }
-
-        .project-description {
-            margin-bottom: 16px;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* Project Details Modal */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -358,34 +162,34 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            z-index: 2000;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
             overflow-y: auto;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(10px);
         }
 
         .modal-content {
-            background: var(--secondary-dark);
-            margin: 40px auto;
-            padding: 30px;
-            border-radius: var(--border-radius);
+            background: var(--bg-secondary);
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 15px;
             width: 90%;
             max-width: 800px;
             position: relative;
-            box-shadow: var(--box-shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--primary-accent);
+            box-shadow: 0 0 50px rgba(232, 0, 255, 0.3);
         }
 
         .close-btn {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
             cursor: pointer;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             transition: var(--transition);
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -393,472 +197,445 @@
         }
 
         .close-btn:hover {
-            color: var(--accent-pink);
-            background: rgba(236, 72, 153, 0.1);
+            color: var(--primary-accent);
+            background: rgba(232, 0, 255, 0.1);
         }
 
-        .project-details {
-            margin-top: 16px;
+        .project-features {
+            margin: 25px 0;
         }
 
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 20px 0;
+        .feature-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-accent);
         }
 
-        .tech-tag {
-            padding: 6px 14px;
-            background: rgba(139, 92, 246, 0.15);
-            color: var(--text-light);
-            border-radius: 16px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(139, 92, 246, 0.25);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 24px;
-        }
-
-        .github-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: var(--gradient-secondary);
-            color: white;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .github-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--secondary-dark);
-            position: relative;
-        }
-
-        .contact-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 30px;
-        }
-
-        .social-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 80px;
-            padding: 16px 12px;
-            border-radius: var(--border-radius);
-            background: rgba(15, 23, 42, 0.4);
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-            background: rgba(139, 92, 246, 0.15);
-        }
-
-        .social-icon {
-            font-size: 1.6rem;
-            margin-bottom: 8px;
-        }
-
-        .social-name {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-light);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-dark);
-            color: white;
-            padding: 40px 0 16px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-content {
-            margin-bottom: 24px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            margin-bottom: 24px;
-        }
-
-        .footer-links li {
-            margin: 0 12px;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-blue);
-        }
-
-        .copyright {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .social-links {
-                gap: 12px;
-            }
-
-            .social-link {
-                width: 70px;
-                padding: 12px 8px;
-            }
-
-            .footer-links {
-                flex-direction: column;
-            }
-
-            .footer-links li {
-                margin: 6px 0;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-        }
     </style>
 </head>
-<body>
+<body class="w-full overflow-x-hidden">
+
     <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Siewe Brunelle</div>
-                <ul class="nav-links">
-                    <li><a href="#home">Accueil</a></li>
-                    <li><a href="#about">À propos</a></li>
-                    <li><a href="#projects">Projets</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold accent-text" style="font-family: 'Roboto Mono', monospace;">B. SIEWE</a>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-lg text-gray-300 hover:text-white transition duration-300">Accueil</a>
+                <a href="#skills" class="nav-link text-lg text-gray-300 hover:text-white transition duration-300">Compétences</a>
+                <a href="#projects" class="nav-link text-lg text-gray-300 hover:text-white transition duration-300">Projets</a>
+                <a href="#about" class="nav-link text-lg text-gray-300 hover:text-white transition duration-300">À Propos</a>
+                <a href="#contact" class="nav-link text-lg text-gray-300 hover:text-white transition duration-300">Contact</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden z-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Nav -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-0 left-0 w-full h-screen" style="background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px);">
+            <nav class="flex flex-col items-center justify-center h-full space-y-8">
+                <a href="#home" class="mobile-nav-link text-3xl text-gray-300">Accueil</a>
+                <a href="#skills" class="mobile-nav-link text-3xl text-gray-300">Compétences</a>
+                <a href="#projects" class="mobile-nav-link text-3xl text-gray-300">Projets</a>
+                <a href="#about" class="mobile-nav-link text-3xl text-gray-300">À Propos</a>
+                <a href="#contact" class="mobile-nav-link text-3xl text-gray-300">Contact</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>Siewe Brunelle</h1>
-            <div class="tagline">Développeuse Full Stack</div>
-            <p>Création de sites web modernes et applications web, responsifs et conviviaux avec passion et précision.</p>
-        </div>
-    </section>
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center text-center px-6 relative">
+            <div class="home-animation">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <div class="max-w-4xl z-10">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 reveal">
+                    Façonner des <span class="accent-text">Frontières</span> Numériques Audacieuses
+                </h1>
+                <p class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-8 reveal" style="transition-delay: 200ms;">
+                    Bonjour, je suis SIEWE Brunelle. Une développeuse debutante doter d'une grande creativité et une réelle passion pour l'informatique.
+                </p>
+                <a href="#projects" class="cta-button inline-block text-white font-semibold text-lg py-3 px-8 reveal" style="transition-delay: 400ms;">
+                    Voir Mes Projets
+                </a>
+            </div>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>À propos de moi</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Je suis Siewe Brunelle <br>
-                    Étudiante en deuxieme année genie logiciel à l'IUGET et développeuse web freelance au Cameroun.<br>
-                    Je crée des solutions sur mesure en utilisant PHP, HTML, CSS, JavaScript dans des startups et les entreprises.</p>
-                    
-                    <div class="skills">
-                        <span class="skill-tag">Développement d'Applications Web</span>
-                        <span class="skill-tag">Résolution de Problèmes</span>
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 lg:py-32">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 reveal">Arsenal Principal</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 max-w-5xl mx-auto">
+                    <!-- Skill Item -->
+                    <div class="sharp-card flex flex-col items-center justify-center p-6 reveal">
+                        <i class="devicon-javascript-plain skill-icon"></i>
+                        <p class="font-semibold text-lg">JavaScript</p>
+                    </div>
+                     <!-- Skill Item -->
+                    <div class="sharp-card flex flex-col items-center justify-center p-6 reveal" style="transition-delay: 100ms;">
+                        <i class="devicon-react-original skill-icon"></i>
+                        <p class="font-semibold text-lg">React</p>
+                    </div>
+                     <!-- Skill Item -->
+                    <div class="sharp-card flex flex-col items-center justify-center p-6 reveal" style="transition-delay: 200ms;">
+                        <i class="devicon-tailwindcss-plain skill-icon"></i>
+                        <p class="font-semibold text-lg">Tailwind</p>
+                    </div>
+                     <!-- Skill Item -->
+                    <div class="sharp-card flex flex-col items-center justify-center p-6 reveal" style="transition-delay: 300ms;">
+                        <i class="devicon-php-plain skill-icon"></i>
+                        <p class="font-semibold text-lg">PHP</p>
+                    </div>
+                  
+                     <!-- Skill Item -->
+                    <div class="sharp-card flex flex-col items-center justify-center p-6 reveal" style="transition-delay: 500ms;">
+                        <i class="devicon-figma-plain skill-icon"></i>
+                        <p class="font-semibold text-lg">Figma</p>
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 lg:py-32">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 reveal">Étude de Cas</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Project Card 1 -->
+                    <div class="sharp-card overflow-hidden reveal">
+                        <img src="https://placehold.co/600x400/141414/FFFFFF?text=Project One" alt="Project Screenshot" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 accent-text">Visibook</h3>
+                            <p class="text-text-secondary mb-4">Une application de gestion des visites développée pour MULTIPRINT LABELS&PACKAGING.</p>
+                            <div class="space-x-4">
+                                <a href="#" class="font-semibold hover:text-primary-accent transition details-link" data-project="1">Détails</a>
+                                <a href="https://github.com/Brunelle2/visits" class="font-semibold hover:text-primary-accent transition" target="_blank">Code Source</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="sharp-card overflow-hidden reveal" style="transition-delay: 200ms;">
+                        <img src="https://placehold.co/600x400/141414/FFFFFF?text=Project Two" alt="Project Screenshot" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 accent-text">stockmanagment</h3>
+                            <p class="text-text-secondary mb-4">Application de gestion de stocks avec suivi en temps réel des entrées/sorties.</p>
+                            <div class="space-x-4">
+                                <a href="#" class="font-semibold hover:text-primary-accent transition details-link" data-project="2">Détails</a>
+                                <a href="https://github.com/Brunelle2/stockmanagment" class="font-semibold hover:text-primary-accent transition" target="_blank">Code Source</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="sharp-card overflow-hidden reveal" style="transition-delay: 400ms;">
+                        <img src="https://placehold.co/600x400/141414/FFFFFF?text=Project Three" alt="Project Screenshot" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 accent-text">AppliMeteo</h3>
+                            <p class="text-text-secondary mb-4">Application météo moderne fournissant des informations météorologiques fiables en temps réel.</p>
+                            <div class="space-x-4">
+                                <a href="#" class="font-semibold hover:text-primary-accent transition details-link" data-project="3">Détails</a>
+                                <a href="https://github.com/Brunelle2/applicationMeteo" class="font-semibold hover:text-primary-accent transition" target="_blank">Code Source</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>Mes Projets</h2>
-            <div class="project-grid">
-                <!-- Projet 1 -->
-                <div class="project-card" data-project="1">
-                    <div class="project-content">
-                        <span class="project-category">Application Web</span>
-                        <h3>Application de gestion de visites</h3>
-                        <p class="project-description">Une Application de gestion de visites sous le nom de <strong>visibook</strong>, conçu afin de faciliter l'organisation et le suivi des visites au sein l'entreprise <strong>MULTIPRINT LABELS&PACKAGING</strong>.</p>
+        <!-- About Section -->
+        <section id="about" class="py-20 lg:py-32">
+            <div class="container mx-auto px-6">
+                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 reveal">L'Ingénieure</h2>
+                <div class="flex flex-col md:flex-row items-center gap-10 lg:gap-16 max-w-5xl mx-auto">
+                    <div class="w-full md:w-1/3 reveal">
+                        <img src="image.png" alt="Portrait of Brunelle" class="w-64 h-64 md:w-full md:h-auto mx-auto border-4 border-primary-accent shadow-lg">
                     </div>
-                </div>
-
-                <!-- Projet 2 -->
-                <div class="project-card" data-project="2">
-                    <div class="project-content">
-                        <span class="project-category">Application Web</span>
-                        <h3>Application de gestion de stocks</h3>
-                        <p class="project-description">Une Application de gestion de stock sous le nom de <strong>stockmanagment</strong> ayant pour but d'assurer un suivi rigoureux des produits, depuis l'entrée en stock jusqu'a la sortie </p>
-                    </div>
-                </div>
-
-                <!-- Projet 3 -->
-                <div class="project-card" data-project="3">
-                    <div class="project-content">
-                        <span class="project-category">Site Web</span>
-                        <h3>Site web météo</h3>
-                        <p class="project-description">Site web météo ou encore <strong>appliMeteo</strong>, qui permet de fournir aux utilisateurs des informations météorologiques fiables et en temps réels, adaptées à leur localisation ou à une ville choisie.</p>
+                    <div class="w-full md:w-2/3 text-center md:text-left reveal" style="transition-delay: 200ms;">
+                        <p class="text-lg text-text-secondary mb-4">
+                            Je construis des choses. Mes outils sont le code, ma toile est le navigateur, et mon obsession est l'exécution parfaite. Je m'épanouis en traduisant des problèmes complexes en solutions numériques propres, élégantes et efficaces.
+                        </p>
+                        <p class="text-lg text-text-secondary mb-4">
+                           Je crois qu'un grand design est invisible et qu'une grande ingénierie se ressent. Mon travail est guidé par une philosophie de minimalisme fonctionnel et une quête incessante de performance.
+                        </p>
+                        <p class="text-lg text-text-secondary">
+                            Au-delà du terminal, je suis une exploratrice urbaine et une étudiante de l'architecture brutaliste, cherchant constamment l'inspiration dans les structures qui façonnent notre monde.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contactez-moi</h2>
-            <div class="contact-content">
-                <p>Intéressé par une collaboration ? N'hésitez pas à me contacter !</p>
-                
-                <div class="social-links">
-                    <a href="https://wa.me/message/VR2ENGYZS5FLM1" class="social-link" target="_blank">
-                        <i class="fab fa-whatsapp social-icon" style="color: #25D366;"></i>
-                        <span class="social-name">WhatsApp</span>
-                    </a>
-                    <a href="mailto:siewenoufele@icloud.com" class="social-link">
-                        <i class="fas fa-envelope social-icon" style="color: #EA4335;"></i>
-                        <span class="social-name">Email</span>
-                    </a>
-                    <a href="http://linkedin.com/in/brunelle-noufele-b35595319" class="social-link" target="_blank">
-                        <i class="fab fa-linkedin social-icon" style="color: #0A66C2;"></i>
-                        <span class="social-name">LinkedIn</span>
-                    </a>
-                    <a href="https://x.com/noufelesiewe?s=21" class="social-link" target="_blank">
-                        <i class="fab fa-twitter social-icon" style="color: #1DA1F2;"></i>
-                        <span class="social-name">Twitter</span>
-                    </a>
-                </div>
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 lg:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Initier le Contact</h2>
+                <p class="text-lg text-text-secondary max-w-2xl mx-auto mb-10 reveal" style="transition-delay: 200ms;">
+                    Ouverte à la collaboration et aux projets stimulants. Si vous avez une idée qui demande précision et créativité, parlons-en.
+                </p>
+                <a href="mailto:siewenoufele@icloud.com" class="cta-button inline-block text-white font-semibold text-lg py-3 px-8 reveal" style="transition-delay: 400ms;">
+                    siewenoufele@icloud.com
+                </a>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <p>N'hésitez pas à me contacter pour discuter de votre projet !</p>
-            </div>
-            <ul class="footer-links">
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <p class="copyright">&copy; 2025 Siewe Brunelle. Tous droits réservés.</p>
+    <footer class="py-8" style="background: var(--bg-secondary);">
+        <div class="container mx-auto px-6 text-center text-text-secondary">
+            <p>&copy; 2025 brunelle SIEWE. Tous droits réservés.</p>
         </div>
     </footer>
 
     <!-- Project Details Modals -->
+    <!-- Modal 1: Visibook -->
     <div id="project-modal-1" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2>Application de gestion de visites</h2>
-            <span class="project-category">Application Web</span>
+            <h2 class="text-3xl font-bold mb-4 accent-text">Projet One- visibook</h2>
+            <p class="text-text-secondary mb-6">Application de  gestion des visites développé pour <strong>MULTIPRINT LABELS&PACKAGING</strong>. Cette application optimise les processus d'accueil et permet un suivi complet des visiteurs.</p>
+                
             
-            <div class="project-details">
-                <p>Une Application de gestion de visites sous le nom de <strong>visibook</strong>, conçu afin de faciliter l'organisation et le suivi des visites au sein l'entreprise <strong>MULTIPRINT LABELS&PACKAGING</strong>.</p>
-                
-                <h3>Fonctionnalités</h3>
-                <ul>
-                    <li>Gestion des utilisateurs : ajout, suppression, modification des comptes</li>
-                    <li>Gestion du Dashboard : consultation</li>
-                    <li>Gestion des visites : ajout, modification et suppression</li>
-                    <li>Améliorer la sécurité et la traçabilité</li>
-                </ul>
-                
-                <h3>Technologies utilisées</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">MySQL</span>
-                    <span class="tech-tag">CSS3</span>
+            <div class="project-features">
+                <h3 class="text-xl font-bold mb-4">Fonctionnalités Principales</h3>
+                <div class="feature-item">
+                    <strong>Gestion des Utilisateurs</strong> - Ajout, modification et suppression des comptes utilisateurs
                 </div>
-                
-                <div class="project-links">
-                    <a href="https://github.com/Brunelle2/visits" class="github-link" target="_blank">
-                        <i class="fab fa-github"></i> Voir sur GitHub
-                    </a>
+                <div class="feature-item">
+                    <strong>Tableau de Bord</strong> - Consultation en temps réel des statistiques et indicateurs
                 </div>
+                <div class="feature-item">
+                    <strong>Gestion des Visites</strong> - Planification, modification et suivi complet des visites
+                </div>
+                <div class="feature-item">
+                    <strong>Sécurité Renforcée</strong> - Système d'authentification et contrôle d'accès
+                </div>
+               
+            </div>
+
+            <div class="project-tech mb-6">
+                <h3 class="text-xl font-bold mb-4">Technologies Utilisées</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">PHP</span>
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">MySQL</span>
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">JavaScript</span>
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">HTML5</span>
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">CSS3</span>
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Bootstrap</span>
+                </div>
+            </div>
+
+            <div class="project-links">
+                <a href="https://github.com/Brunelle2/visits" class="cta-button inline-block text-white font-semibold py-2 px-6" target="_blank">
+                    Voir le Code Source
+                </a>
             </div>
         </div>
     </div>
 
+    <!-- Modal 2: StockManager -->
     <div id="project-modal-2" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2>Application de gestion de stocks</h2>
-            <span class="project-category">Application Web</span>
+            <h2 class="text-3xl font-bold mb-4 accent-text">Project Two - stockmanagment</h2>
+            <p class="text-text-secondary mb-6">Application  de gestion de stocks avec suivi en temps réel</p>
             
-            <div class="project-details">
-                <p>Une Application de gestion de stock sous le nom de <strong>stockmanagment</strong> ayant pour but d'assurer un suivi rigoureux des produits, depuis l'entrée en stock jusqu'a la sortie afin d'optimiser l'approvisionnement et eviter les ruptures ou surplus.</p>
-                
-                <h3>Fonctionnalités</h3>
-                <ul>
-                    <li>Enregistrer les produits entrants (approvisionnement)</li>
-                    <li>Suivre les produits sortants (ventes)</li>
-                    <li>Gestion des Tableaux de bord</li>
-                </ul>
-                
-                <h3>Technologies utilisées</h3>
-                <div class="project-tech">
-                     <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">MySQL</span>
-                    <span class="tech-tag">CSS3</span>
+            <div class="project-features">
+                <h3 class="text-xl font-bold mb-4">Fonctionnalités Principales</h3>
+                <div class="feature-item">
+                    <strong>Suivi des Entrées/Sorties</strong> - Enregistrement automatique des mouvements de stock
+                </div>
+        
+                <div class="feature-item">
+                    <strong>Tableaux de Bord</strong> - Visualisation des données en temps réel
                 </div>
                 
-                <div class="project-links">
-                    <a href="https://github.com/Brunelle2/stockmanagment" class="github-link" target="_blank">
-                        <i class="fab fa-github"></i> Voir sur GitHub
-                    </a>
+                
+            </div>
+
+            <div class="project-tech mb-6">
+                <h3 class="text-xl font-bold mb-4">Technologies Utilisées</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">PHP</span>
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">MySQL</span>
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">JavaScript</span>
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">HTML/CSS</span>
                 </div>
+            </div>
+
+            <div class="project-links">
+                <a href="https://github.com/Brunelle2/stockmanagment" class="cta-button inline-block text-white font-semibold py-2 px-6" target="_blank">
+                    Voir le Code Source
+                </a>
             </div>
         </div>
     </div>
-    
+
+    <!-- Modal 3: AppliMétéo -->
     <div id="project-modal-3" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2>Site Web Météo</h2>
-            <span class="project-category">Site Web</span>
-    
-            <div class="project-details">
-                <p>Site web météo ou encore <strong>appliMeteo</strong>, qui permet de fournir aux utilisateurs des informations météorologiques fiables et en temps réels, adaptées à leur localisation ou à une ville choisie.</p>
-                
-                <h3>Fonctionnalités</h3>
-                <ul>
-                    <li>Afficher la météo actuelle</li>
-                    <li>Présenter les prévisions pour plusieurs jours</li>
-                    <li>Permettre la recherche par ville/pays</li>
-                    <li>Offrir une interface simple, claire et agréable</li>
-                    <li>Aider les utilisateurs à prendre de meilleures décisions</li>
-                </ul>
-                
-                <h3>Technologies utilisées</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">CSS3</span>
+            <h2 class="text-3xl font-bold mb-4 accent-text">Project three - AppliMétéo </h2>
+            <p class="text-text-secondary mb-6">Application météo moderne avec données en temps réel</p>
+            
+            <div class="project-features">
+                <h3 class="text-xl font-bold mb-4">Fonctionnalités Principales</h3>
+                <div class="feature-item">
+                    <strong>Météo Actuelle</strong> - Données détaillées en temps réel
                 </div>
-                
-                <div class="project-links">
-                    <a href="https://github.com/Brunelle2/applicationMeteo" class="github-link" target="_blank">
-                        <i class="fab fa-github"></i> Voir sur GitHub
-                    </a>
+                <div class="feature-item">
+                    <strong>Prévisions 5 Jours</strong> - Visualisation des tendances météo
                 </div>
+                <div class="feature-item">
+                    <strong>Recherche par Localisation</strong> - Géolocalisation et recherche par ville
+                </div>
+                <div class="feature-item">
+                    <strong>Interface Responsive</strong> - Adaptation parfaite à tous les appareils
+                </div>
+                <div class="feature-item">
+                    <strong>API Intégration</strong> - Données météo fiables via services externes
+                </div>
+            </div>
+
+            <div class="project-tech mb-6">
+                <h3 class="text-xl font-bold mb-4">Technologies Utilisées</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">JavaScript</span>
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">HTML5</span>
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">CSS3</span>
+                    <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">API REST</span>
+        
+                </div>
+            </div>
+
+            <div class="project-links">
+                <a href="https://github.com/Brunelle2/applicationMeteo" class="cta-button inline-block text-white font-semibold py-2 px-6" target="_blank">
+                    Voir le Code Source
+                </a>
             </div>
         </div>
     </div>
 
     <script>
-        // Smooth scrolling pour les liens d'ancrage
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            const toggleMenu = () => {
+                mobileMenu.classList.toggle('hidden');
+                // Toggle body scroll
+                document.body.style.overflow = mobileMenu.classList.contains('hidden') ? 'auto' : 'hidden';
+            };
+
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', toggleMenu);
             });
-        });
 
-        // Changement de style du header au scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 80) {
-                header.style.backgroundColor = 'rgba(15, 23, 42, 0.98)';
-                header.style.backdropFilter = 'blur(12px)';
-            } else {
-                header.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            }
-        });
+            // --- Active Nav Link on Scroll ---
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
 
-        // Gestion des modales de projets
-        const projectCards = document.querySelectorAll('.project-card');
-        const modals = document.querySelectorAll('.modal');
-        const closeButtons = document.querySelectorAll('.close-btn');
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
 
-        projectCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const projectId = card.getAttribute('data-project');
-                const modal = document.getElementById(`project-modal-${projectId}`);
-                if (modal) {
-                    modal.style.display = 'block';
-                    document.body.style.overflow = 'hidden';
-                }
+            sections.forEach(section => {
+                sectionObserver.observe(section);
             });
-        });
+            
+            // --- Reveal elements on scroll ---
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
 
-        closeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const modal = button.closest('.modal');
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
             });
-        });
 
-        // Fermer la modale en cliquant en dehors
-        window.addEventListener('click', (e) => {
-            modals.forEach(modal => {
-                if (e.target === modal) {
+            // --- Project Details Modal Functionality ---
+            const detailLinks = document.querySelectorAll('.details-link');
+            const modals = document.querySelectorAll('.modal');
+            const closeButtons = document.querySelectorAll('.close-btn');
+
+            // Open modal when details link is clicked
+            detailLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const projectId = link.getAttribute('data-project');
+                    const modal = document.getElementById(`project-modal-${projectId}`);
+                    if (modal) {
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            // Close modal when close button is clicked
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
                     modal.style.display = 'none';
                     document.body.style.overflow = 'auto';
+                });
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                modals.forEach(modal => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    modals.forEach(modal => {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    });
                 }
             });
         });
